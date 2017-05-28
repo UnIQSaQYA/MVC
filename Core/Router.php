@@ -99,6 +99,30 @@ class Router
 	}
 
 	/**
+	 * convert the string with hyphens to StudlyCaps,
+	 * e.g. post-authors => PostAuthors
+	 * 
+	 * @param  string $string The string to convert
+	 * @return string         The converted string
+	 */
+	public function convertToStudlyCaps($string)
+	{
+		return str_replace(' ', '',  ucwords(str_replace('-', ' ', $string)));
+	}
+
+	/**
+	 * convert the string with hyphons to camel case,
+	 * e.g. add-new => addNew
+	 *  
+	 * @param  string $string the converted the string
+	 * @return $string
+	 */
+	public function convertToCamelCase($string)
+	{
+		return lcfirst($this->convertToStudlyCaps($string));
+	}
+
+	/**
 	 * Get the currently matched parameter `
 	 * @return array
 	 */
